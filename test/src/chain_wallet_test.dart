@@ -1,11 +1,10 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:chain_wallet/chain_wallet.dart';
-import 'package:test/test.dart';
+import 'package:flutter_test/flutter_test.dart';
 
 void main() {
-  group('ChainWallet', () {
+  group('ChainWalletManager', () {
     test('can be instantiated', () {
-      expect(ChainWallet(), isNotNull);
+      expect(ChainWalletManager.instance, isNotNull);
     });
   });
 }
