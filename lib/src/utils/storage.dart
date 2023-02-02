@@ -2,7 +2,11 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 /// Secure Storage provider
 class SecureStorageProvider {
+  /// Use Flutter Secure Storage to safely store keys.
+  ///
+  /// See documentation https://pub.dev/packages/flutter_secure_storage
   static const FlutterSecureStorage _storage = FlutterSecureStorage();
+
   static const String _seedPhraseKey = 'seed_phrase_key';
   static const String _walletAddressKey = 'wallet_address_key';
   static const String _privateKey = 'private_key';
