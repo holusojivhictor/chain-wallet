@@ -55,7 +55,7 @@ class ChainWalletManager {
   final storage = const FlutterSecureStorage();
 
   /// Mnemonic provider
-  final mnemonicProvider = SecureMnemonicProvider();
+  final storageProvider = SecureStorageProvider();
 
   final Map<String, WalletEventHandler> _eventHandlerMap = {};
 
@@ -157,7 +157,7 @@ class ChainWalletManager {
   Future<WalletKeys> importMasterWalletFromMnemonic({
     required String mnemonic,
   }) async {
-    await mnemonicProvider.saveMnemonic(mnemonic);
+    await storageProvider.saveMnemonic(mnemonic);
 
     final privateKey = await getPrivateKeyFromMnemonic();
     final ethPrivateKey = EthPrivateKey.fromHex(privateKey);
@@ -249,14 +249,14 @@ class ChainWalletManager {
   /// Generate and save Mnemonic
   Future<String> generateAndSaveMnemonic() async {
     final mnemonic = generateMnemonic();
-    await mnemonicProvider.saveMnemonic(mnemonic);
+    await storageProvider.saveMnemonic(mnemonic);
 
     return mnemonic;
   }
 
   /// Get private key from mnemonic
   Future<String> getPrivateKeyFromMnemonic() async {
-    final mnemonic = await mnemonicProvider.getMnemonic();
+    final mnemonic = await storageProvider.getMnemonic();
     final chain = _getChainByMnemonic(mnemonic);
     final extendedKey = chain.forPath(_pathForPrivateKey);
     return extendedKey.privateKeyHex();
@@ -264,7 +264,7 @@ class ChainWalletManager {
 
   /// Returns BIP32 Extended Public Key
   Future<String> getPublicKeyFromMnemonic() async {
-    final mnemonic = await mnemonicProvider.getMnemonic();
+    final mnemonic = await storageProvider.getMnemonic();
     final chain = _getChainByMnemonic(mnemonic);
     final extendedKey = chain.forPath(_pathForPublicKey);
     return extendedKey.publicKey().toString();
@@ -272,24 +272,18 @@ class ChainWalletManager {
 
   /// Fetch signer credentials
   Future<void> fetchCredentials() async {
-    final privateKey = await _getPrivateKey();
+    final privateKey = await storageProvider.getPrivateKey();
 
-    if (privateKey == null) {
+    if (privateKey.isEmpty) {
       throw Exception('Credentials not found');
     }
     credentials = EthPrivateKey.fromHex(privateKey);
   }
 
-  /// Get saved private key
-  Future<String?> _getPrivateKey() async {
-    final key = await storage.read(key: 'privateKey');
-    return key;
-  }
-
   /// Store private key and wallet address
   Future<void> storeKeys(String privateKey, String walletAddress) async {
-    await storage.write(key: 'walletAddress', value: walletAddress);
-    await storage.write(key: 'privateKey', value: privateKey);
+    await storageProvider.saveAddress(walletAddress);
+    await storageProvider.savePrivateKey(privateKey);
   }
 
   /// Returns BIP32 Root Key
