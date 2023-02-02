@@ -5,6 +5,7 @@ import 'dart:typed_data';
 import 'package:bip39/bip39.dart';
 import 'package:chain_wallet/chain_wallet.dart';
 import 'package:dart_bip32_bip44/dart_bip32_bip44.dart';
+import 'package:flutter/foundation.dart';
 import 'package:http/http.dart';
 import 'package:web3dart/web3dart.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
@@ -251,7 +252,7 @@ class ChainWalletManager {
   /// Get private key from mnemonic
   Future<String> getPrivateKeyFromMnemonic() async {
     final mnemonic = await storageProvider.getMnemonic();
-    final chain = _getChainByMnemonic(mnemonic);
+    final chain = await getChainByMnemonic(mnemonic);
     final extendedKey = chain.forPath(_pathForPrivateKey);
     return extendedKey.privateKeyHex();
   }
@@ -259,7 +260,7 @@ class ChainWalletManager {
   /// Returns BIP32 Extended Public Key
   Future<String> getPublicKeyFromMnemonic() async {
     final mnemonic = await storageProvider.getMnemonic();
-    final chain = _getChainByMnemonic(mnemonic);
+    final chain = await getChainByMnemonic(mnemonic);
     final extendedKey = chain.forPath(_pathForPublicKey);
     return extendedKey.publicKey().toString();
   }
@@ -281,6 +282,10 @@ class ChainWalletManager {
   }
 
   /// Returns BIP32 Root Key
+  Future<Chain> getChainByMnemonic(String mnemonic) async {
+    return compute<String, Chain>(_getChainByMnemonic, mnemonic);
+  }
+
   Chain _getChainByMnemonic(String mnemonic) {
     final seed = mnemonicToSeedHex(mnemonic); // Returns BIP39 Seed
     return Chain.seed(seed);
