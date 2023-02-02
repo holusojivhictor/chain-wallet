@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:chain_wallet/chain_wallet.dart';
 import 'package:flutter/foundation.dart';
 import 'package:web3dart/crypto.dart';
@@ -55,7 +53,6 @@ class ChainWalletClient {
 
     await contract.createWallet(credentials: credentials);
     contract.agentDeployedEvents().take(1).listen((event) {
-      log('Created new wallet ${event.agent.hexEip55}');
       agentAddress = event.agent;
       onAgentDeployedListener!(event.agent);
     });
@@ -79,7 +76,6 @@ class ChainWalletClient {
     await contract.createAgent(credentials: credentials);
 
     contract.agentDeployedEvents().take(1).listen((event) {
-      log('Created new sub wallet ${event.agent.hexEip55}');
       agentAddress = event.agent;
       onAgentDeployedListener!(event.agent);
     });
