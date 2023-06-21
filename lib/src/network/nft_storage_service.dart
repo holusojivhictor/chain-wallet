@@ -36,7 +36,7 @@ class NFTStorageService {
       );
 
       return response.data;
-    } on DioError catch (_) {
+    } on DioException catch (_) {
       rethrow;
     }
   }
@@ -59,7 +59,7 @@ class NFTStorageService {
       );
 
       return response.data;
-    } on DioError catch (_) {
+    } on DioException catch (_) {
       rethrow;
     }
   }

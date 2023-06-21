@@ -1,7 +1,5 @@
 // ignore_for_file: prefer_constructors_over_static_methods
 
-import 'dart:typed_data';
-
 import 'package:bip39/bip39.dart';
 import 'package:chain_wallet/chain_wallet.dart';
 import 'package:dart_bip32_bip44/dart_bip32_bip44.dart';
