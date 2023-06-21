@@ -38,7 +38,7 @@ class NFTStorageClient {
       final res = StorageResponse.fromJson(json);
 
       return res;
-    } on DioError catch (_) {
+    } on DioException catch (_) {
       rethrow;
     }
   }
@@ -58,7 +58,7 @@ class NFTStorageClient {
       final res = StorageResponse.fromJson(json);
 
       return res;
-    } on DioError catch (_) {
+    } on DioException catch (_) {
       rethrow;
     }
   }
