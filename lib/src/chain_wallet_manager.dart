@@ -165,17 +165,13 @@ class ChainWalletManager {
   }
 
   /// Create wallet with provided credentials and return agent address.
-  Future<EthereumAddress> createWallet() async {
-    final agent = await walletClient.createWallet(credentials: credentials);
-
-    return agent;
+  Future<void> createWallet() {
+    return walletClient.createWallet(credentials: credentials);
   }
 
   /// Create a sub-wallet with provided credentials and return agent address.
-  Future<EthereumAddress> createSubWallet() async {
-    final agent = await walletClient.createSubWallet(credentials: credentials);
-
-    return agent;
+  Future<void> createSubWallet() {
+    return walletClient.createSubWallet(credentials: credentials);
   }
 
   /// Get agent sub wallets
