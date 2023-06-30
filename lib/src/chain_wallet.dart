@@ -44,49 +44,29 @@ class ChainWalletClient {
   }
 
   /// Create wallet with provided credentials and return agent address.
-  Future<EthereumAddress> createWallet({
+  Future<void> createWallet({
     required EthPrivateKey credentials,
   }) async {
     _assertListener(onAgentDeployedListener);
 
-    EthereumAddress? agentAddress;
-
     await contract.createWallet(credentials: credentials);
+
     contract.agentDeployedEvents().take(1).listen((event) {
-      agentAddress = event.agent;
       onAgentDeployedListener!(event.agent);
     });
-
-    await Future<void>.delayed(const Duration(seconds: 30));
-
-    if (agentAddress == null) {
-      throw Exception('Wallet creation failed');
-    }
-
-    return agentAddress!;
   }
 
   /// Create a sub-wallet with provided credentials and return agent address.
-  Future<EthereumAddress> createSubWallet({
+  Future<void> createSubWallet({
     required EthPrivateKey credentials,
   }) async {
     _assertListener(onAgentDeployedListener);
-    EthereumAddress? agentAddress;
 
     await contract.createAgent(credentials: credentials);
 
     contract.agentDeployedEvents().take(1).listen((event) {
-      agentAddress = event.agent;
       onAgentDeployedListener!(event.agent);
     });
-
-    await Future<void>.delayed(const Duration(seconds: 30));
-
-    if (agentAddress == null) {
-      throw Exception('Wallet creation failed');
-    }
-
-    return agentAddress!;
   }
 
   /// Get agent sub wallets
