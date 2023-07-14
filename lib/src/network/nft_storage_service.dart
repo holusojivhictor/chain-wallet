@@ -55,7 +55,7 @@ class NFTStorageService {
           headers: {
             'Authorization': 'Bearer $nftStorageApiKey',
           },
-          contentType: Headers.textPlainContentType,
+          contentType: Headers.formUrlEncodedContentType,
         ),
       );
 
