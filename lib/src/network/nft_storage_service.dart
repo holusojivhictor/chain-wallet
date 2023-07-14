@@ -50,12 +50,12 @@ class NFTStorageService {
     try {
       final response = await dio.post<dynamic>(
         url,
-        data: data,
+        data: Stream.fromIterable(data.map((e) => [e])),
         options: Options(
           headers: {
             'Authorization': 'Bearer $nftStorageApiKey',
+            Headers.contentLengthHeader: data.length,
           },
-          contentType: Headers.formUrlEncodedContentType,
         ),
       );
 
