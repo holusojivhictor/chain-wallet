@@ -29,7 +29,6 @@ class NFTStorageService {
         options: Options(
           headers: {
             'Authorization': 'Bearer $nftStorageApiKey',
-            'content-disposition': 'form-data; name="file"; filename=""',
             'content-type': 'multipart/form-data'
           },
         ),
@@ -50,11 +49,11 @@ class NFTStorageService {
     try {
       final response = await dio.post<dynamic>(
         url,
-        data: Stream.fromIterable(data.map((e) => [e])),
+        data: List<int>.from(data),
         options: Options(
           headers: {
             'Authorization': 'Bearer $nftStorageApiKey',
-            Headers.contentLengthHeader: data.length,
+            Headers.contentTypeHeader: 'application/octet-stream'
           },
         ),
       );

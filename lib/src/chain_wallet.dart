@@ -303,7 +303,7 @@ class ChainWalletClient {
     );
     return client.events(filter).firstWhere((el) {
       final decoded = event.decodeResults(
-        el.topics!,
+        el.topics?.cast<String>() ?? <String>[],
         el.data!,
       );
       final hash = decoded[0] as Uint8List;

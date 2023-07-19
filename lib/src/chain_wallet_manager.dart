@@ -277,11 +277,7 @@ class ChainWalletManager {
 
   /// Returns BIP32 Root Key
   Future<Chain> getChainByMnemonic(String mnemonic) async {
-    return compute<String, Chain>(_getChainByMnemonic, mnemonic);
-  }
-
-  Chain _getChainByMnemonic(String mnemonic) {
-    final seed = mnemonicToSeedHex(mnemonic); // Returns BIP39 Seed
+    final seed = await compute<String, String>(mnemonicToSeedHex, mnemonic);
     return Chain.seed(seed);
   }
 
