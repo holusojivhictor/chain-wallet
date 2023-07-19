@@ -911,10 +911,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return AdminChanged(decoded);
+      return AdminChanged(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -932,10 +935,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return AgentDeployed(decoded);
+      return AgentDeployed(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -953,10 +959,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return BeaconUpgraded(decoded);
+      return BeaconUpgraded(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -974,10 +983,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return MaxStakeAmountChanged(decoded);
+      return MaxStakeAmountChanged(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -995,10 +1007,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return MinStakeAmountChanged(decoded);
+      return MinStakeAmountChanged(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1016,10 +1031,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return Paused(decoded);
+      return Paused(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1037,10 +1055,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return RoleAdminChanged(decoded);
+      return RoleAdminChanged(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1058,10 +1079,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return RoleGranted(decoded);
+      return RoleGranted(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1079,10 +1103,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return RoleRevoked(decoded);
+      return RoleRevoked(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1100,10 +1127,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return StakesAdded(decoded);
+      return StakesAdded(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1121,10 +1151,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return StakesWithdrawn(decoded);
+      return StakesWithdrawn(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1142,10 +1175,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return TransactionCompleted(decoded);
+      return TransactionCompleted(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1163,10 +1199,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return TransactionCreated(decoded);
+      return TransactionCreated(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1184,10 +1223,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return TreasuryAddressChanged(decoded);
+      return TreasuryAddressChanged(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1205,10 +1247,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return Unpaused(decoded);
+      return Unpaused(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1226,10 +1271,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return Upgraded(decoded);
+      return Upgraded(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1247,10 +1295,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return WalletCreated(decoded);
+      return WalletCreated(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1268,10 +1319,13 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return WalletDeleted(decoded);
+      return WalletDeleted(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -1289,65 +1343,94 @@ class ChainWalletMaster extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return WalletShared(decoded);
+      return WalletShared(
+        decoded,
+        result,
+      );
     });
   }
 }
 
 class AdminChanged {
-  AdminChanged(List<dynamic> response)
-      : previousAdmin = (response[0] as _i1.EthereumAddress),
+  AdminChanged(
+    List<dynamic> response,
+    this.event,
+  )   : previousAdmin = (response[0] as _i1.EthereumAddress),
         newAdmin = (response[1] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress previousAdmin;
 
   final _i1.EthereumAddress newAdmin;
+
+  final _i1.FilterEvent event;
 }
 
 class AgentDeployed {
-  AgentDeployed(List<dynamic> response)
-      : walletId = (response[0] as _i2.Uint8List),
+  AgentDeployed(
+    List<dynamic> response,
+    this.event,
+  )   : walletId = (response[0] as _i2.Uint8List),
         agent = (response[1] as _i1.EthereumAddress);
 
   final _i2.Uint8List walletId;
 
   final _i1.EthereumAddress agent;
+
+  final _i1.FilterEvent event;
 }
 
 class BeaconUpgraded {
-  BeaconUpgraded(List<dynamic> response)
-      : beacon = (response[0] as _i1.EthereumAddress);
+  BeaconUpgraded(
+    List<dynamic> response,
+    this.event,
+  ) : beacon = (response[0] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress beacon;
+
+  final _i1.FilterEvent event;
 }
 
 class MaxStakeAmountChanged {
-  MaxStakeAmountChanged(List<dynamic> response)
-      : newAmount = (response[0] as BigInt);
+  MaxStakeAmountChanged(
+    List<dynamic> response,
+    this.event,
+  ) : newAmount = (response[0] as BigInt);
 
   final BigInt newAmount;
+
+  final _i1.FilterEvent event;
 }
 
 class MinStakeAmountChanged {
-  MinStakeAmountChanged(List<dynamic> response)
-      : newAmount = (response[0] as BigInt);
+  MinStakeAmountChanged(
+    List<dynamic> response,
+    this.event,
+  ) : newAmount = (response[0] as BigInt);
 
   final BigInt newAmount;
+
+  final _i1.FilterEvent event;
 }
 
 class Paused {
-  Paused(List<dynamic> response)
-      : account = (response[0] as _i1.EthereumAddress);
+  Paused(
+    List<dynamic> response,
+    this.event,
+  ) : account = (response[0] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress account;
+
+  final _i1.FilterEvent event;
 }
 
 class RoleAdminChanged {
-  RoleAdminChanged(List<dynamic> response)
-      : role = (response[0] as _i2.Uint8List),
+  RoleAdminChanged(
+    List<dynamic> response,
+    this.event,
+  )   : role = (response[0] as _i2.Uint8List),
         previousAdminRole = (response[1] as _i2.Uint8List),
         newAdminRole = (response[2] as _i2.Uint8List);
 
@@ -1356,11 +1439,15 @@ class RoleAdminChanged {
   final _i2.Uint8List previousAdminRole;
 
   final _i2.Uint8List newAdminRole;
+
+  final _i1.FilterEvent event;
 }
 
 class RoleGranted {
-  RoleGranted(List<dynamic> response)
-      : role = (response[0] as _i2.Uint8List),
+  RoleGranted(
+    List<dynamic> response,
+    this.event,
+  )   : role = (response[0] as _i2.Uint8List),
         account = (response[1] as _i1.EthereumAddress),
         sender = (response[2] as _i1.EthereumAddress);
 
@@ -1369,11 +1456,15 @@ class RoleGranted {
   final _i1.EthereumAddress account;
 
   final _i1.EthereumAddress sender;
+
+  final _i1.FilterEvent event;
 }
 
 class RoleRevoked {
-  RoleRevoked(List<dynamic> response)
-      : role = (response[0] as _i2.Uint8List),
+  RoleRevoked(
+    List<dynamic> response,
+    this.event,
+  )   : role = (response[0] as _i2.Uint8List),
         account = (response[1] as _i1.EthereumAddress),
         sender = (response[2] as _i1.EthereumAddress);
 
@@ -1382,80 +1473,120 @@ class RoleRevoked {
   final _i1.EthereumAddress account;
 
   final _i1.EthereumAddress sender;
+
+  final _i1.FilterEvent event;
 }
 
 class StakesAdded {
-  StakesAdded(List<dynamic> response)
-      : staker = (response[0] as _i1.EthereumAddress),
+  StakesAdded(
+    List<dynamic> response,
+    this.event,
+  )   : staker = (response[0] as _i1.EthereumAddress),
         totalStakes = (response[1] as BigInt);
 
   final _i1.EthereumAddress staker;
 
   final BigInt totalStakes;
+
+  final _i1.FilterEvent event;
 }
 
 class StakesWithdrawn {
-  StakesWithdrawn(List<dynamic> response)
-      : staker = (response[0] as _i1.EthereumAddress);
+  StakesWithdrawn(
+    List<dynamic> response,
+    this.event,
+  ) : staker = (response[0] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress staker;
+
+  final _i1.FilterEvent event;
 }
 
 class TransactionCompleted {
-  TransactionCompleted(List<dynamic> response)
-      : transactionHash = (response[0] as _i2.Uint8List);
+  TransactionCompleted(
+    List<dynamic> response,
+    this.event,
+  ) : transactionHash = (response[0] as _i2.Uint8List);
 
   final _i2.Uint8List transactionHash;
+
+  final _i1.FilterEvent event;
 }
 
 class TransactionCreated {
-  TransactionCreated(List<dynamic> response)
-      : locator = (response[0] as _i2.Uint8List);
+  TransactionCreated(
+    List<dynamic> response,
+    this.event,
+  ) : locator = (response[0] as _i2.Uint8List);
 
   final _i2.Uint8List locator;
+
+  final _i1.FilterEvent event;
 }
 
 class TreasuryAddressChanged {
-  TreasuryAddressChanged(List<dynamic> response)
-      : addr = (response[0] as _i1.EthereumAddress);
+  TreasuryAddressChanged(
+    List<dynamic> response,
+    this.event,
+  ) : addr = (response[0] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress addr;
+
+  final _i1.FilterEvent event;
 }
 
 class Unpaused {
-  Unpaused(List<dynamic> response)
-      : account = (response[0] as _i1.EthereumAddress);
+  Unpaused(
+    List<dynamic> response,
+    this.event,
+  ) : account = (response[0] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress account;
+
+  final _i1.FilterEvent event;
 }
 
 class Upgraded {
-  Upgraded(List<dynamic> response)
-      : implementation = (response[0] as _i1.EthereumAddress);
+  Upgraded(
+    List<dynamic> response,
+    this.event,
+  ) : implementation = (response[0] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress implementation;
+
+  final _i1.FilterEvent event;
 }
 
 class WalletCreated {
-  WalletCreated(List<dynamic> response)
-      : owner = (response[0] as _i1.EthereumAddress),
+  WalletCreated(
+    List<dynamic> response,
+    this.event,
+  )   : owner = (response[0] as _i1.EthereumAddress),
         walletId = (response[1] as _i2.Uint8List);
 
   final _i1.EthereumAddress owner;
 
   final _i2.Uint8List walletId;
+
+  final _i1.FilterEvent event;
 }
 
 class WalletDeleted {
-  WalletDeleted(List<dynamic> response)
-      : owner = (response[0] as _i1.EthereumAddress);
+  WalletDeleted(
+    List<dynamic> response,
+    this.event,
+  ) : owner = (response[0] as _i1.EthereumAddress);
 
   final _i1.EthereumAddress owner;
+
+  final _i1.FilterEvent event;
 }
 
 class WalletShared {
-  WalletShared(List<dynamic> response)
-      : sharer = (response[0] as _i1.EthereumAddress),
+  WalletShared(
+    List<dynamic> response,
+    this.event,
+  )   : sharer = (response[0] as _i1.EthereumAddress),
         recipient = (response[1] as _i1.EthereumAddress),
         walletId = (response[2] as _i2.Uint8List);
 
@@ -1464,4 +1595,6 @@ class WalletShared {
   final _i1.EthereumAddress recipient;
 
   final _i2.Uint8List walletId;
+
+  final _i1.FilterEvent event;
 }

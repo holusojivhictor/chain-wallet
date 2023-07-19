@@ -206,10 +206,13 @@ class Erc20 extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return Approval(decoded);
+      return Approval(
+        decoded,
+        result,
+      );
     });
   }
 
@@ -227,17 +230,22 @@ class Erc20 extends _i1.GeneratedContract {
     );
     return client.events(filter).map((_i1.FilterEvent result) {
       final decoded = event.decodeResults(
-        result.topics!,
+        result.topics?.cast<String>() ?? <String>[],
         result.data!,
       );
-      return Transfer(decoded);
+      return Transfer(
+        decoded,
+        result,
+      );
     });
   }
 }
 
 class Approval {
-  Approval(List<dynamic> response)
-      : owner = (response[0] as _i1.EthereumAddress),
+  Approval(
+    List<dynamic> response,
+    this.event,
+  )   : owner = (response[0] as _i1.EthereumAddress),
         spender = (response[1] as _i1.EthereumAddress),
         value = (response[2] as BigInt);
 
@@ -246,11 +254,15 @@ class Approval {
   final _i1.EthereumAddress spender;
 
   final BigInt value;
+
+  final _i1.FilterEvent event;
 }
 
 class Transfer {
-  Transfer(List<dynamic> response)
-      : from = (response[0] as _i1.EthereumAddress),
+  Transfer(
+    List<dynamic> response,
+    this.event,
+  )   : from = (response[0] as _i1.EthereumAddress),
         to = (response[1] as _i1.EthereumAddress),
         value = (response[2] as BigInt);
 
@@ -259,4 +271,6 @@ class Transfer {
   final _i1.EthereumAddress to;
 
   final BigInt value;
+
+  final _i1.FilterEvent event;
 }

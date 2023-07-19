@@ -24,13 +24,13 @@ class NFTStorageClient {
 
   /// Upload file to storage as multi-part form data.
   Future<StorageResponse> upload({
-    required String filePath,
+    required Uint8List file,
     String fileName = '',
   }) async {
     try {
       final response = await _storageService.storeFile(
         url: '$url/upload',
-        formData: await _getFormData(filePath, fileName),
+        formData: _getFormData(file, fileName),
         nftStorageApiKey: nftStorageApiKey,
       );
 
@@ -63,13 +63,18 @@ class NFTStorageClient {
     }
   }
 
-  Future<FormData> _getFormData(String filePath, String fileName) async {
-    return FormData.fromMap({
-      'file': await MultipartFile.fromFile(
-        filePath,
-        filename: fileName,
-        contentType: MediaType('image', 'png'),
+  FormData _getFormData(Uint8List value, String fileName) {
+    final formData = FormData(camelCaseContentDisposition: true);
+    formData.files.add(
+      MapEntry(
+        'file',
+        MultipartFile.fromBytes(
+          value,
+          filename: fileName,
+          contentType: MediaType.parse('application/octet-stream'),
+        ),
       ),
-    });
+    );
+    return formData;
   }
 }
